@@ -1,0 +1,7 @@
+MeridianPay Account Statement
+Account: MeridianPay Corporate Treasury (MP-00000001)
+Balance: $2,450,000.00
+
+Date                  Counterparty                          Amount
+2026-09-04T16:08:57   Payroll Processor Inc.           -184,200.00
+2026-09-04T16:08:57   Federal Reserve ACH               500,000.00

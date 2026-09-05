@@ -1,0 +1,47 @@
+<%- include('_header', { title: 'Admin', user }) %>
+<div class="card">
+  <h2>Operations Admin</h2>
+  <p>Logged in as <strong><%= user.username %></strong> <span class="badge admin">admin</span></p>
+  <p><strong>FLAG2:</strong> <%= flag2 %></p>
+</div>
+
+<div class="card">
+  <h3>Upload Invoice</h3>
+  <form method="POST" action="/admin/upload" enctype="multipart/form-data">
+    <label>Invoice file</label>
+    <input type="file" name="invoice" required>
+    <input type="submit" value="Upload">
+  </form>
+  <h4>Uploaded files</h4>
+  <table>
+    <tr><th>Filename</th><th></th></tr>
+    <% files.forEach(f => { %>
+      <tr><td><%= f %></td><td><a href="/admin/convert?file=<%= encodeURIComponent(f) %>">Convert to text</a></td></tr>
+    <% }) %>
+    <% if (!files.length) { %><tr><td colspan="2">No files uploaded yet.</td></tr><% } %>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Convert existing file (ops text preview)</h3>
+  <form method="GET" action="/admin/convert">
+    <label>Filename (relative to uploads/)</label>
+    <input type="text" name="file" placeholder="invoice-oct.pdf">
+    <input type="submit" value="Convert">
+  </form>
+  <% if (convertOutput) { %><h4>Output</h4><pre class="output"><%= convertOutput %></pre><% } %>
+  <% if (convertError) { %><div class="error"><%= convertError %></div><% } %>
+</div>
+
+<div class="card">
+  <h3>Webhook Test</h3>
+  <p>Verify a shipment-notification webhook URL responds before saving it to a customer's account.</p>
+  <form method="POST" action="/admin/webhook-test">
+    <label>Webhook URL</label>
+    <input type="text" name="url" placeholder="https://partner.example.com/hooks/meridian">
+    <input type="submit" value="Test URL">
+  </form>
+  <% if (webhookOutput) { %><h4>Response body</h4><pre class="output"><%= webhookOutput %></pre><% } %>
+  <% if (webhookError) { %><div class="error"><%= webhookError %></div><% } %>
+</div>
+<%- include('_footer') %>

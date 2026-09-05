@@ -1,0 +1,24 @@
+services:
+  web:
+    build: ./web
+    container_name: meridian-web
+    ports:
+      - "8080:3000"
+    networks:
+      - front
+      - back
+    restart: unless-stopped
+
+  internal:
+    build: ./internal
+    container_name: meridian-internal
+    networks:
+      - back
+    # deliberately NOT published to the host - reachable only from the
+    # "back" network (i.e. from the web container), simulating a
+    # segmented internal service tier
+    restart: unless-stopped
+
+networks:
+  front:
+  back:

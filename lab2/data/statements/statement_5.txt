@@ -1,0 +1,6 @@
+MeridianPay Account Statement
+Account: Carol - Everyday Checking (MP-10029344)
+Balance: $102.90
+
+Date                  Counterparty                          Amount
+2026-09-04T16:08:57   Riverside Coffee Co.                   -6.25

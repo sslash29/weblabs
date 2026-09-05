@@ -1,0 +1,5 @@
+web/node_modules/
+web/uploads/*
+!web/uploads/.gitkeep
+web/flag3.txt
+*.log

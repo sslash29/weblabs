@@ -1,0 +1,12 @@
+<%- include('_header', { title: 'Shipment ' + shipment.tracking_number, user }) %>
+<div class="card">
+  <h2>Shipment <%= shipment.tracking_number %></h2>
+  <table>
+    <tr><th>Origin</th><td><%= shipment.origin %></td></tr>
+    <tr><th>Destination</th><td><%= shipment.destination %></td></tr>
+    <tr><th>Status</th><td><%= shipment.status %></td></tr>
+    <tr><th>Notes</th><td><%= shipment.notes %></td></tr>
+  </table>
+  <p><a href="/dashboard">&larr; Back to dashboard</a></p>
+</div>
+<%- include('_footer') %>

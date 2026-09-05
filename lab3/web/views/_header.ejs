@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= typeof title !== 'undefined' ? title + ' - Meridian Global Freight' : 'Meridian Global Freight' %></title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+<header class="nav">
+  <a href="/" class="brand">MERIDIAN<span>FREIGHT</span></a>
+  <nav class="links">
+    <% if (typeof user !== 'undefined' && user) { %>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/shipments/search">Search Shipments</a>
+      <% if (user.role === 'admin') { %><a href="/admin">Admin</a><% } %>
+      <a href="/logout">Logout (<%= user.username %>)</a>
+    <% } else { %>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    <% } %>
+  </nav>
+</header>
+<main>

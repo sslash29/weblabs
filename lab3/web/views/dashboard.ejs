@@ -1,0 +1,28 @@
+<%- include('_header', { title: 'Dashboard', user }) %>
+<div class="card">
+  <h2>My Shipments</h2>
+  <p>Welcome back, <strong><%= user.username %></strong>
+    <span class="badge <%= user.role %>"><%= user.role %></span>
+  </p>
+  <table>
+    <tr><th>Tracking #</th><th>Origin</th><th>Destination</th><th>Status</th><th></th></tr>
+    <% shipments.forEach(s => { %>
+      <tr>
+        <td><%= s.tracking_number %></td>
+        <td><%= s.origin %></td>
+        <td><%= s.destination %></td>
+        <td><%= s.status %></td>
+        <td><a href="/shipments/<%= s.id %>">View</a></td>
+      </tr>
+    <% }) %>
+    <% if (!shipments.length) { %><tr><td colspan="5">No shipments yet.</td></tr><% } %>
+  </table>
+</div>
+<div class="card">
+  <h3>Search all shipments</h3>
+  <form method="GET" action="/shipments/search">
+    <input type="search" name="q" placeholder="Search by tracking number, origin, or destination">
+    <input type="submit" value="Search">
+  </form>
+</div>
+<%- include('_footer') %>

@@ -1,0 +1,14 @@
+<%- include('_header', { title: 'Login', user }) %>
+<div class="card" style="max-width:420px;margin:0 auto;">
+  <h2>Log in</h2>
+  <% if (error) { %><div class="error"><%= error %></div><% } %>
+  <form method="POST" action="/login">
+    <label>Username</label>
+    <input type="text" name="username" required autocomplete="username">
+    <label>Password</label>
+    <input type="password" name="password" required autocomplete="current-password">
+    <input type="submit" value="Log in">
+  </form>
+  <p>New here? <a href="/register">Create an account</a></p>
+</div>
+<%- include('_footer') %>

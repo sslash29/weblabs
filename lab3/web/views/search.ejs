@@ -1,0 +1,23 @@
+<%- include('_header', { title: 'Search Shipments', user }) %>
+<div class="card">
+  <h2>Search Shipments</h2>
+  <form method="GET" action="/shipments/search">
+    <input type="search" name="q" value="<%= q %>" placeholder="Search by tracking number, origin, or destination">
+    <input type="submit" value="Search">
+  </form>
+  <% if (error) { %><div class="error">Query error: <%= error %></div><% } %>
+  <table>
+    <tr><th>Tracking #</th><th>Origin</th><th>Destination</th><th>Status</th><th>Notes</th></tr>
+    <% rows.forEach(r => { %>
+      <tr>
+        <td><%= r.tracking_number %></td>
+        <td><%= r.origin %></td>
+        <td><%= r.destination %></td>
+        <td><%= r.status %></td>
+        <td><%= r.notes %></td>
+      </tr>
+    <% }) %>
+    <% if (!rows.length && !error) { %><tr><td colspan="5">No results.</td></tr><% } %>
+  </table>
+</div>
+<%- include('_footer') %>

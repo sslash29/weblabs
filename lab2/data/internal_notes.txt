@@ -1,0 +1,1 @@
+Internal ops note: statement export tool reads straight from the filesystem path it's given. Someone should sandbox that. -- filed as tech debt, not prioritized.

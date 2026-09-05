@@ -1,0 +1,7 @@
+MeridianPay Account Statement
+Account: Alice - Everyday Checking (MP-10029341)
+Balance: $4,230.18
+
+Date                  Counterparty                          Amount
+2026-09-04T16:08:57   Greenfield Grocers                    -84.12
+2026-09-04T16:08:57   Employer Direct Deposit             2,100.00

@@ -1,0 +1,1 @@
+2026-09-04T06:47:45.833824 | referer=http://localhost:8000/admin/tickets/5 | data=FLAG{stored_xss_admin_flag_exfiltrated}

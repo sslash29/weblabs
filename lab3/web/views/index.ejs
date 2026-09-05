@@ -1,0 +1,15 @@
+<%- include('_header', { title: 'Home', user }) %>
+<div class="hero">
+  <h1>Global freight tracking, simplified.</h1>
+  <p>Meridian Global Freight moves ocean, air, and ground cargo for over 4,000 customers worldwide.
+     Track shipments, manage documentation, and coordinate with your account team from one portal.</p>
+  <% if (!user) { %>
+    <a href="/register"><button>Create an account</button></a>
+  <% } %>
+</div>
+<div class="card">
+  <h3>Customer Portal</h3>
+  <p>Existing customers can log in to track shipments, search shipment history, and manage documents.
+     New customers can self-register for a free tracking account.</p>
+</div>
+<%- include('_footer') %>
