@@ -1,0 +1,13 @@
+RULES OF ENGAGEMENT
+
+IN SCOPE:
+- The local Docker application running on http://localhost:5000/
+- /search endpoint
+- /update_email endpoint
+
+OUT OF SCOPE:
+- Any external websites, live infrastructure, or PortSwigger domains.
+- Denial of Service (DoS) attacks against the Docker container.
+- Automated vulnerability scanners (e.g., Nessus, OpenVAS, Burp Active Scanner).
+
+Authorized objective: Bypass the CSRF protection to change the account email address using only the provided web interface and an intercepting proxy.

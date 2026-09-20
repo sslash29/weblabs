@@ -1,0 +1,12 @@
+CHALLENGE OBJECTIVE: 
+Successfully submit the "Update Email" form. The server requires a matched pair of a csrfKey cookie and a hidden csrf form token.
+
+STEPS:
+1. Load the application and observe the default cookies assigned to your session.
+2. Attempt to update the email address normally and observe the rejection.
+3. Investigate the /search function. Analyze the HTTP response in Burp Suite to see how your search term is reflected in the headers.
+4. Exploit the CRLF vulnerability in the search function to inject a new `csrfKey` cookie into your browser. (Target cookie value: YOUR-KEY).
+5. Verify the cookie has been injected successfully via the Debug Info panel on the home page.
+6. Intercept the "Update Email" request using Burp Suite (or modify the DOM using Browser Developer Tools).
+7. Change the hidden `csrf` token to match the expected pair (Target form token: VALID_CSRF_TOKEN_123).
+8. Forward the request to successfully update the email.

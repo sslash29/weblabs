@@ -1,0 +1,17 @@
+SPOILER WARNING - STEP-BY-STEP SOLUTION
+
+1. Start Burp Suite and configure your browser to proxy traffic through it.
+2. Navigate to http://localhost:5000/. Notice the application sets `csrfKey=ORIGINAL_SECRET_KEY`.
+3. To inject the malicious cookie, send the following payload to the search endpoint via the browser address bar or Burp Repeater:
+   http://localhost:5000/search?term=test%0d%0aSet-Cookie:%20csrfKey=YOUR-KEY
+
+4. The server reflects the CRLF characters (%0d%0a), causing the HTTP response to split and create a new Set-Cookie header. Your browser's csrfKey is now overwritten with `YOUR-KEY`.
+
+5. Navigate back to http://localhost:5000/. Verify in the Debug Info that `csrfKey` is now `YOUR-KEY`.
+
+6. Right-click the "New Email" input box in your browser and select "Inspect" (or use Burp Suite to intercept the next request).
+7. Find the hidden input field: <input type="hidden" name="csrf" value="INVALID_TOKEN_999">
+8. Change "INVALID_TOKEN_999" to "VALID_CSRF_TOKEN_123".
+9. Type an email address and click "Update". 
+
+The server receives the injected cookie (YOUR-KEY) and the manipulated form token (VALID_CSRF_TOKEN_123). Because they form the expected matched pair, the CSRF defense is bypassed, and the email updates successfully.
